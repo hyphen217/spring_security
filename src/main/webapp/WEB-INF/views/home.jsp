@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-화이팅
+<img src="/img/bye.gif">
 </body>
 </html>
