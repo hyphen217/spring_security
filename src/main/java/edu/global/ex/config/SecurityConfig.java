@@ -16,19 +16,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private CustomUserDetailsService customUserDetailsService;
-	
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		// 우선 CSRF설정을 해제한다.
 		// 초기 개발시만 해주는게 좋다.
 		http.csrf().disable();
-		http.authorizeRequests()
-	      .antMatchers("/user/**").hasAnyRole("USER") // DB상에서는 ROLE_USER이다 /user/**(URL) : user로 입력하여 들어오는 모든 것에 인증을 시키겠다.
-	      .antMatchers("/admin/**").hasAnyRole("ADMIN"); // /admin/**(URL) : admin으로 들어오는 모든 것에 인증을 시키겠다.
-//	      .antMatchers("/**").permitAll();
-//		  .antMatchers("/**").hasAnyRole("ADMIN"); // id: admin, pw:admin
+		http.authorizeRequests().antMatchers("/user/**").hasAnyRole("USER") // DB상에서는 ROLE_USER이다 /user/**(URL) : user로 입력하여 들어오는 모든 것에 인증을 시키겠다.
+			.antMatchers("/admin/**").hasAnyRole("ADMIN") // id: admin, pw:admin /admin/**(URL) : admin으로 들어오는 모든 것에 인증을 시키겠다.
+			.antMatchers("/**").permitAll();
 
-		http.formLogin(); // 스프링 시큐리티에 있는 기본 로그인 폼을 사용하겠다.
+//		http.formLogin(); // 스프링 시큐리티에 있는 기본 로그인 폼을 사용하겠다.
+		http.formLogin().loginPage("/login") // loginPage() 는 말 그대로 로그인 할 페이지(LoginController.java) url 비교이고,
+			.usernameParameter("id") // login.jsp의 name을 database의 이름인 "username"이 아닌 "id"로 설정
+			.passwordParameter("pw")
+			.permitAll(); // 모든 유저가 로그인 화면을 볼 수 있게 한다.
 	}
 
 	@Override
@@ -36,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 //		auth.inMemoryAuthentication().withUser("user").password("{noop}user").roles("USER").and()
 //		.withUser("admin").password("{noop}admin").roles("ADMIN");
-		
+
 		auth.userDetailsService(customUserDetailsService).passwordEncoder(new BCryptPasswordEncoder());
 	}
 }
