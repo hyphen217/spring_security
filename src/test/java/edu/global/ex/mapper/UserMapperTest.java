@@ -41,6 +41,7 @@ class UserMapperTest {
 		user.setEnabled(1);
 
 		userMapper.insertUser(user);
-		userMapper.insertAuthorities(user);
+//		userMapper.insertAuthorities(user);
+		userMapper.insertAdminAuthorities(user);
 	}
 }
