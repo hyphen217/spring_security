@@ -15,22 +15,32 @@ class UserMapperTest {
 	@Autowired
 	private UserMapper userMapper;
 
-	@Test
-	void testInserUser() {
-
-//      @Insert("insert into users(username,password,enabled) values(#{username},#{password},#{enabled})")
-//      public int insertUser(UserVO userVO);
+//	@Test
+//	void testInserUser() {
 //
-//      @Insert("insert into AUTHORITIES (username,AUTHORITY) values(#{username},'ROLE_USER')")
-//      public void insertAuthorities(UserVO UserVO);
+////      @Insert("insert into users(username,password,enabled) values(#{username},#{password},#{enabled})")
+////      public int insertUser(UserVO userVO);
+////
+////      @Insert("insert into AUTHORITIES (username,AUTHORITY) values(#{username},'ROLE_USER')")
+////      public void insertAuthorities(UserVO UserVO);
+//
+//		UserVO user = new UserVO();
+//		user.setUsername("kim4");
+//		user.setPassword(new BCryptPasswordEncoder().encode("1234"));
+//		user.setEnabled(1);
+//
+//		userMapper.insertUser(user);
+//		userMapper.insertAuthorities(user);
+//	}
 
+	@Test
+	void testInwerAdminsur() {
 		UserVO user = new UserVO();
-		user.setUsername("kim2");
-		user.setPassword(new BCryptPasswordEncoder().encode("kim2"));
+		user.setUsername("admin2");
+		user.setPassword(new BCryptPasswordEncoder().encode("admin2"));
 		user.setEnabled(1);
 
 		userMapper.insertUser(user);
 		userMapper.insertAuthorities(user);
 	}
-
 }

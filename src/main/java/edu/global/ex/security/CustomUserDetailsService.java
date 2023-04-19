@@ -19,7 +19,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	private UserMapper userMapper;
 
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException { // id/pw 결과를 무전기로 알려주는 부분
 
 		log.warn("Load User By UserVO number: " + username);
 		UserVO vo = userMapper.getUser(username);
