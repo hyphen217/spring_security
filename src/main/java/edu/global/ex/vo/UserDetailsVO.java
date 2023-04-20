@@ -43,6 +43,10 @@ public class UserDetailsVO implements UserDetails { // DB와 연결 || ID/PW/Aut
 
 	// ==============================================================================
 
+	public String getCart() {
+		return "이것은 장바구니다";
+	}
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
