@@ -22,12 +22,12 @@
 			<input type="submit" value="로그아웃" />
 		</form:form>
 		<p><a href="<c:url value="/loginInfo" />">로그인 정보 확인 방법3 가지</a></p>
-		<p>principal: <sec:authentication property="principal"/></p> <!-- property="principal" ⇒ getPrincipal() : principal: edu.global.ex.vo.UserDetailsVO@12022b7b -->
+		<p>principal: <sec:authentication property="principal"/></p>
+		<!-- property="principal" ⇒ getPrincipal() : principal: edu.global.ex.vo.UserDetailsVO@12022b7b -->
 		
-		
-		
+		<!-- principal = UserDetailsVO 객체이다 -->
 		<p><sec:authentication property="principal.username"/>님 환영합니다.</p>
-		<p><sec:authentication property="principal.authorities"/></p>
+		<p>권한체크:<sec:authentication property="principal.authorities"/></p>
 		<p><sec:authentication property="principal.cart"/></p>
 		
 <sec:authorize access="hasRole('ADMIN')">
