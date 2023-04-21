@@ -26,7 +26,11 @@
 			<label for="password">비밀번호</label>
 			<input type="password" id="password" name="pw" /><!-- SecurityConfig.java의 .usernameParameter("pw")로 인해 password이 아닌 pw로 받아올 수 있다. -->
 		</p>
-		<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> --%>
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		<!--${_csrf.parameterName}와 ${_csrf.token}은 정해져있는 변수명이다. -->
+		<!-- form:form = xml에서 디폴트로 제공되는 form 태그를 사용하는 것이 아닌, taglib에서 제공하는 form을 사용하겠다. -->
+		<!-- form태그만 사용할 시 csrf를 주석처리하면 에러 발생. form:form태그 사용 시 csrf를 주석처리해도 실행됨 -->
+		<!-- POST방식만 된다 -->
 		<button type="submit" class="btn">로그인</button>
 	</form:form>
 </body>

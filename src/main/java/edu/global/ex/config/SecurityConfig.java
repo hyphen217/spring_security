@@ -21,7 +21,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private CustomUserDetailsService customUserDetailsService;
 
 	@Bean
-	// IOC 컨테이너에 new 객체 생성함 ⇒ Spring 문법을 사용할 수 있다. @Bean에 등록된 데이터를 @Autowired 등으로 불러온다.
+	// IOC 컨테이너에 new 객체 생성함 ⇒ Spring 문법을 사용할 수 있다. @Bean에 등록된 데이터를 @Autowired 등으로
+	// 불러온다.
 	// 외부 라이브러리에서 가져오는 것은 Bean을 사용하면 좋다.
 	public PasswordEncoder bCryptPasswordEncoder() { // UserMapperTest.java에 return
 		return new BCryptPasswordEncoder();
@@ -45,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		// 우선 CSRF설정을 해제한다.
 		// 초기 개발시만 해주는게 좋다.
-		http.csrf().disable();
+//		http.csrf().disable(); // csrf를 끈다. 키려면 해당 구문을 삭제
 		http.authorizeRequests().antMatchers("/user/**").hasAnyRole("USER") // DB상에서는 ROLE_USER이다 /user/**(URL) : user로
 																			// 입력하여 들어오는 모든 것에 인증을 시키겠다.
 				.antMatchers("/admin/**").hasAnyRole("ADMIN") // id: admin, pw:admin /admin/**(URL) : admin으로 들어오는 모든 것에
