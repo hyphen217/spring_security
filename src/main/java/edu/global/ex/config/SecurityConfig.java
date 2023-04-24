@@ -21,8 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private CustomUserDetailsService customUserDetailsService;
 
 	@Bean
-	// IOC 컨테이너에 new 객체 생성함 ⇒ Spring 문법을 사용할 수 있다. @Bean에 등록된 데이터를 @Autowired 등으로
-	// 불러온다.
+	// IOC 컨테이너에 new 객체 생성함 ⇒ Spring 문법을 사용할 수 있다. @Bean에 등록된 데이터를 @Autowired 등으로 불러온다.
 	// 외부 라이브러리에서 가져오는 것은 Bean을 사용하면 좋다.
 	public PasswordEncoder bCryptPasswordEncoder() { // UserMapperTest.java에 return
 		return new BCryptPasswordEncoder();

@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import edu.global.ex.vo.UserVO;
 
 @Mapper // MyBatis용 인터페이스라는 것을 알려주는 어노테이션
+//SecurityConfig.java의 Bean을 끌고옴
 public interface UserMapper {
 	public UserVO getUser(String username);
 
